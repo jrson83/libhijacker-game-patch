@@ -15,6 +15,119 @@ void DoPatch_Bloodborne109(pid_t app_pid, uint64_t text_base)
 	write_bytes32(app_pid, NO_ASLR(0x04d9916e), 0);
 	// Patch DLC Save Requirement
 	write_bytes(app_pid, NO_ASLR(0x023b67b3), "49c7460801010101"); // <!-- with `SPDLCMESSENGER00` [0] +`SPDLCMESSENGER01` [1] +`SPEXPANSIONDLC03` [3] but [2] is 0 but lets unlock it anyways -->
+	// Replace HolygrailExParam[5300] with ID 6530 data
+	write_bytes(app_pid, NO_ASLR(0x00FBC400), "8a190000"); // ID = 6530
+	write_bytes(app_pid, NO_ASLR(0x00FBC404), "05");       // ritualLv = 5
+	write_bytes(app_pid, NO_ASLR(0x00FBC405), "04");       // attributeId = 4
+	write_bytes(app_pid, NO_ASLR(0x00FBC406), "1202");     // mapBaseId = 530
+	write_bytes(app_pid, NO_ASLR(0x00FBC408), "03");       // holygrailTypeId = 3
+	write_bytes(app_pid, NO_ASLR(0x00FBC409), "c8");       // variationNum = 200
+	write_bytes(app_pid, NO_ASLR(0x00FBC40A), "02");       // mainFeature_1 = 2
+	write_bytes(app_pid, NO_ASLR(0x00FBC40B), "00");       // pad_0
+	write_bytes(app_pid, NO_ASLR(0x00FBC40C), "58ae0700"); // dungeonNameBaseId = 503000
+	write_bytes(app_pid, NO_ASLR(0x00FBC410), "a014");     // uniqueBaseFlagId = 5280
+	write_bytes(app_pid, NO_ASLR(0x00FBC412), "00");       // uniqueItem00_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC413), "13");       // uniqueItem00_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC414), "14");       // uniqueItem01_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC415), "27");       // uniqueItem01_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC416), "28");       // uniqueItem02_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC417), "3b");       // uniqueItem02_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC418), "3c");       // uniqueItem03_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC419), "4f");       // uniqueItem03_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC41A), "ffffffff"); // directMapUid = -1
+	write_bytes(app_pid, NO_ASLR(0x00FBC41E), "b8cf0000"); // requiredMaterialId = 53000
+	write_bytes(app_pid, NO_ASLR(0x00FBC422), "0000");     // groupFrameNameId
+	write_bytes(app_pid, NO_ASLR(0x00FBC424), "50");       // uniqueItem04_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC425), "63");       // uniqueItem04_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC426), "64");       // uniqueItem05_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC427), "77");       // uniqueItem05_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC428), "78");       // uniqueItem06_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC429), "8b");       // uniqueItem06_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC42A), "8c");       // uniqueItem07_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC42B), "9f");       // uniqueItem07_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC42C), "a0");       // uniqueItem08_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC42D), "b3");       // uniqueItem08_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC42E), "b4");       // uniqueItem09_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC42F), "c7");       // uniqueItem09_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC430), "ff");       // uniqueItem10_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC431), "ff");       // uniqueItem10_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC432), "ff");       // uniqueItem11_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC433), "ff");       // uniqueItem11_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC434), "ff");       // uniqueItem12_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC435), "ff");       // uniqueItem12_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC436), "ff");       // uniqueItem13_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC437), "ff");       // uniqueItem13_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC438), "b6dd9800"); // fixedSf_1_subFeatureLotId = 9953030
+	write_bytes(app_pid, NO_ASLR(0x00FBC43C), "bbdd9800"); // fixedSf_2 = 9953035
+	write_bytes(app_pid, NO_ASLR(0x00FBC440), "c6dd9800"); // fixedSf_3 = 9953050
+	write_bytes(app_pid, NO_ASLR(0x00FBC444), "d4dd9800"); // fixedSf_4 = 9953060
+	write_bytes(app_pid, NO_ASLR(0x00FBC448), "b7dd9800"); // fixedSf_5 = 9953015
+	write_bytes(app_pid, NO_ASLR(0x00FBC44C), "32150000"); // freeSf_1 = 53010
+	write_bytes(app_pid, NO_ASLR(0x00FBC450), "34150000"); // freeSf_2 = 53020
+	write_bytes(app_pid, NO_ASLR(0x00FBC454), "46050000"); // freeSf_3 = 53070
+	write_bytes(app_pid, NO_ASLR(0x00FBC458), "ff");       // uniqueItem14_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC459), "ff");       // uniqueItem14_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC45A), "01");       // isGenericHolygrail
+	write_bytes(app_pid, NO_ASLR(0x00FBC45B), "9f");       // releaseFlagIdOffset
+	write_bytes(app_pid, NO_ASLR(0x00FBC45C), "00");       // pad_3
+	write_bytes(app_pid, NO_ASLR(0x00FBC45D), "ffffffffffffffffffffffffffffffffffffffff"); // groupSf placeholders
+	// Replace HolygrailExParam[5302] with ID 6532 data
+	write_bytes(app_pid, NO_ASLR(0x00FBC480), "94190000"); // ID = 6532
+	write_bytes(app_pid, NO_ASLR(0x00FBC484), "05");       // ritualLv = 5
+	write_bytes(app_pid, NO_ASLR(0x00FBC485), "04");       // attributeId = 4
+	write_bytes(app_pid, NO_ASLR(0x00FBC486), "1402");     // mapBaseId = 532
+	write_bytes(app_pid, NO_ASLR(0x00FBC488), "03");       // holygrailTypeId = 3
+	write_bytes(app_pid, NO_ASLR(0x00FBC489), "c8");       // variationNum = 200
+	write_bytes(app_pid, NO_ASLR(0x00FBC48A), "02");       // mainFeature_1 = 2
+	write_bytes(app_pid, NO_ASLR(0x00FBC48B), "00");       // pad_0
+	write_bytes(app_pid, NO_ASLR(0x00FBC48C), "58ae0700"); // dungeonNameBaseId = 503000
+	write_bytes(app_pid, NO_ASLR(0x00FBC490), "a014");     // uniqueBaseFlagId = 5280
+	write_bytes(app_pid, NO_ASLR(0x00FBC492), "00");       // uniqueItem00_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC493), "13");       // uniqueItem00_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC494), "14");       // uniqueItem01_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC495), "27");       // uniqueItem01_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC496), "28");       // uniqueItem02_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC497), "3b");       // uniqueItem02_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC498), "3c");       // uniqueItem03_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC499), "4f");       // uniqueItem03_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC49A), "ffffffff"); // directMapUid = -1
+	write_bytes(app_pid, NO_ASLR(0x00FBC49E), "b8cf0000"); // requiredMaterialId = 53000
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A2), "0000");     // groupFrameNameId
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A4), "50");       // uniqueItem04_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A5), "63");       // uniqueItem04_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A6), "64");       // uniqueItem05_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A7), "77");       // uniqueItem05_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A8), "78");       // uniqueItem06_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4A9), "8b");       // uniqueItem06_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4AA), "8c");       // uniqueItem07_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4AB), "9f");       // uniqueItem07_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4AC), "a0");       // uniqueItem08_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4AD), "b3");       // uniqueItem08_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4AE), "b4");       // uniqueItem09_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4AF), "c7");       // uniqueItem09_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B0), "ff");       // uniqueItem10_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B1), "ff");       // uniqueItem10_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B2), "ff");       // uniqueItem11_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B3), "ff");       // uniqueItem11_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B4), "ff");       // uniqueItem12_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B5), "ff");       // uniqueItem12_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B6), "ff");       // uniqueItem13_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B7), "ff");       // uniqueItem13_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4B8), "2edf9800"); // fixedSf_1_subFeatureLotId = 9953230
+	write_bytes(app_pid, NO_ASLR(0x00FBC4BC), "33df9800"); // fixedSf_2 = 9953235
+	write_bytes(app_pid, NO_ASLR(0x00FBC4C0), "3edf9800"); // fixedSf_3 = 9953250
+	write_bytes(app_pid, NO_ASLR(0x00FBC4C4), "78feed05"); // fixedSf_4 = 995010120
+	write_bytes(app_pid, NO_ASLR(0x00FBC4C8), "2fdf9800"); // fixedSf_5 = 9953215
+	write_bytes(app_pid, NO_ASLR(0x00FBC4CC), "b8c00000"); // freeSf_1 = 53240
+	write_bytes(app_pid, NO_ASLR(0x00FBC4D0), "ffffffff"); // freeSf_2 = -1
+	write_bytes(app_pid, NO_ASLR(0x00FBC4D4), "ffffffff"); // freeSf_3 = -1
+	write_bytes(app_pid, NO_ASLR(0x00FBC4D8), "ff");       // uniqueItem14_head
+	write_bytes(app_pid, NO_ASLR(0x00FBC4D9), "ff");       // uniqueItem14_tail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4DA), "01");       // isGenericHolygrail
+	write_bytes(app_pid, NO_ASLR(0x00FBC4DB), "9f");       // releaseFlagIdOffset
+	write_bytes(app_pid, NO_ASLR(0x00FBC4DC), "00");       // pad_3
+	write_bytes(app_pid, NO_ASLR(0x00FBC4DD), "ffffffffffffffffffffffffffffffffffffffff"); // groupSf placeholders
+	printf_notification("Bloodborne: HolygrailExParam Patched");
 	// 60 FPS by Lance
 	if (parseXML(BB_60FPSKey))
 	{
@@ -147,7 +260,7 @@ void DoPatch_Bloodborne109(pid_t app_pid, uint64_t text_base)
 		write_bytes(app_pid, NO_ASLR(0x02715d78), "90");
 		write_bytes(app_pid, NO_ASLR(0x020367c7), "488d351cd2c702");
 		write_bytes(app_pid, NO_ASLR(0x020369e8), "488d35b5cfc702");
-		write_wstring(app_pid, NO_ASLR(0x04cb39ea), L"This 60fps patch was");
+		write_wstring(app_pid, NO_ASLR(0x04cb39ea), L"This 60fps Isz patch was");
 		write_wstring(app_pid, NO_ASLR(0x04cb39a4), L"Made with love, by Lance McDonald");
 		// remove call to `assert()`
 		write_bytes(app_pid, NO_ASLR(0x02fbf178), "4831c0c3");
